@@ -3,7 +3,7 @@
 using namespace std;
 
 const int charLen = 20;
-//todo Hey man, this shit is fucked. Please convert code to use a char array instead of a string
+//todo Hey man, this messed up. Please convert code to use a char array instead of a string
 int main() {
 	//string first, second;
 	char first[charLen];
