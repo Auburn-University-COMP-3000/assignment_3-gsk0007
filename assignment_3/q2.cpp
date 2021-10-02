@@ -1,19 +1,21 @@
 #include <iostream>
+#include <iomanip>
 
 using namespace std;
 
 bool isFull(char seatChar[7][5]);
 void checkSeat(char seatChar[7][5],int row,char seat);
 void printSeats(char seatChart[7][5]);
+int seatToInt(const char &seat);
 
 int main() {
 	char seatChart[7][5] = {{'1','A','B','C','D'},
-				{'2','A','B','C','D'},
-				{'3','A','B','C','D'},
-				{'4','A','B','C','D'},
-				{'5','A','B','C','D'},
-				{'6','A','B','C','D'},
-				{'7','A','B','C','D'}}; 
+							{'2','A','B','C','D'},
+							{'3','A','B','C','D'},
+							{'4','A','B','C','D'},
+							{'5','A','B','C','D'},
+							{'6','A','B','C','D'},
+							{'7','A','B','C','D'}}; 
 	int row = 0;
 	char seat = ' ',
 	     enterAgain = 'N';	
@@ -40,8 +42,9 @@ int main() {
 		cin  >> enterAgain;
 	} while(enterAgain == 'Y' && !(isFull(seatChart)));
  
-	if (isFull(seatChart))
+	if (isFull(seatChart)){
 		cout << "Sorry, there are no more empty seats on this plane." << endl;
+	};
  
 	return 0;
 }
@@ -57,11 +60,35 @@ bool isFull(char seatChar[7][5]) {
 }
 
 void checkSeat(char seatChart[7][5], int row, char seat) {
-	int i = 0;
+	int seatInt = seatToInt(seat);
+
+	if(seatChart[row-1][seatInt] == 'X'){
+		cout << "Sorry the seat in row " << row << " and seat" << seat << " is taken" << endl;
+	}else if(seatChart[row-1][seatInt] != 'X'){
+		cout << "Your seat is in row " << row << " and seat " << seat << endl;
+		seatChart[row-1][seatInt] = 'X';
+	}
 
 }
 
 void printSeats(char seatChart[7][5]) {
+	cout << endl;
 	cout << "AVAILABLE SEATS:" << endl;
-	
+	for (int i = 0; i < 7; i++) {
+		cout << seatChart[i][0] << setw(5) << seatChart[i][1] << setw(5) << seatChart[i][2] << setw(5) << seatChart[i][3] << setw(5) << seatChart[i][4] << endl;
+	}
 }
+
+int seatToInt(const char &seat){
+	if(seat == 'A'){
+		return 1;
+	}else if(seat == 'B'){
+		return 2;
+	}else if(seat == 'C'){
+		return 3;
+	}else if(seat == 'D'){
+		return 4;
+	}else{
+		exit(1);
+	}
+};
