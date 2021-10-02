@@ -9,7 +9,8 @@
 			"iostream": "cpp",
 			"ostream": "cpp",
 			"xstring": "cpp",
-			"utility": "cpp"
+			"utility": "cpp",
+			"ios": "cpp"
 		}
 	}
 }
