@@ -4,9 +4,10 @@ using namespace std;
 
 
 void input(string &first, string &second);
+void display(int *added, const int &carry, const int &counter);
 
 const int charLen = 20;
-//todo Hey man, this messed up. Please convert code to use a char array instead of a string
+
 int main() {
 	//string first, second;
 	string first;
@@ -56,6 +57,9 @@ int main() {
 			for(int i=xLen;i<yLen;i++){
 				added[i] = y[i];
 			}
+			if(carry == 1){
+				added[yLen+1] = 1;
+			};
 	}else{
 		for(int i = 0; i<yLen; i++){
 				if(x[i]+y[i]+carry>=10){
@@ -70,14 +74,27 @@ int main() {
 			};
 			for(int i=yLen;i<xLen;i++){
 				added[i] = x[i];
-			}
+			};
+			if(carry == 1){
+				added[yLen+1] = 1;
+			};
 	};
+
+	// Display sum
+	display(added, carry, counter);
+
+	return 0;
+}
+
+void display(int *added, const int &carry, const int &counter){
+	if(carry == 1){
+		cout << "1";
+	}
 	for(int i=counter-1; i>=0; i--){
 		cout<<added[i];
 	};
 	cout<<endl;
-	return 0;
-}
+};
 
 void input(string &first, string &second){
 	cout << "Enter the first number:";
