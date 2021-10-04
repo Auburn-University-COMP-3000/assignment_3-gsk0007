@@ -66,7 +66,8 @@ int main()
 		};
 		for (int i = xLen; i < yLen; i++)
 		{
-			added[i] = y[i];
+			added[i] = y[i] + carry;
+			carry = 0;
 		}
 		if (carry == 1)
 		{
@@ -92,7 +93,8 @@ int main()
 		};
 		for (int i = yLen; i < xLen; i++)
 		{
-			added[i] = x[i];
+			added[i] = x[i] + carry;
+			carry = 0;
 		};
 		if (carry == 1)
 		{
